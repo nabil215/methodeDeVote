@@ -1,21 +1,9 @@
-function resultat = voteMajoritaire(mat,n,m,vPond)
-
-    % normalisation de pondération
-    somme=0;
-    for i=1:n
-        somme = vPond(i)+ somme;        
-    end
-    %somme=somme-1;
-    for i=1:n
-        vPond(i)=vPond(i)/somme;
-       
-    end
-    %******************************
+function resultat = voteMajoritaireAbsolu(mat,n,m)
     vector = zeros(1,m);
     for i=1:n
         for j=1:m
             if mat(i,j)==1
-                vector(j)=vector(j)+ vPond(i);
+                vector(j)=vector(j)+1;
             end                
         end
     end
@@ -36,7 +24,7 @@ function resultat = voteMajoritaire(mat,n,m,vPond)
         end
     end
     
-    if deuxclasse == 0
+    if deuxclasse == 0 && max>n/2
         resultat = decision;        
     else
         
